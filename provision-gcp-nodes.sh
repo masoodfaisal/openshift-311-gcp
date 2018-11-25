@@ -9,7 +9,7 @@
 ##########
 
 set -e
-gcloud config set project OCP-3-11
+gcloud config set project ocp-3-11
 
 # provision the master nodes
 #Masters
