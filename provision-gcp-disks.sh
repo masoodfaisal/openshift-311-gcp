@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#!/bin/bash
+
 
 ##########
 # This script will provision GCP disks
@@ -19,7 +19,7 @@ gcloud compute disks create "masternode3-docker" --size "50" --zone "asia-southe
 #create docker disks 3 infra nodes
 gcloud compute disks create "infranode1-docker" --size "50" --zone "asia-southeast1-a" --type "pd-standard" &
 gcloud compute disks create "infranode2-docker" --size "50" --zone "asia-southeast1-b" --type "pd-standard" &
-gcloud compute disks create "infranode3-docker" --size "50" --zone "asia-southeast1-c" --type "pd-standard" &
+gcloud compute disks create "infranode3-docker" --size "50" --zone "asia-southeast1-cc" --type "pd-standard" &
 
 #create dockers disks for 2 app nodes
 gcloud compute disks create "node1-docker" --size "50" --zone "asia-southeast1-a" --type "pd-standard" &

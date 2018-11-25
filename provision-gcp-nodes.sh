@@ -5,6 +5,7 @@
 # 3 master nodes
 # 3 infra and gluster nodes. Same nodes will be used for infra and gluster.
 # 2 app nodes
+# bastion station
 ##########
 
 set -e
@@ -25,3 +26,7 @@ gcloud compute instances create "infranode3" --zone "asia-southeast1-c" --machin
 # provision the app nodes
 gcloud compute instances create "node1" --zone "asia-southeast1-a" --machine-type "n1-standard-2"  --subnet "default" --maintenance-policy "TERMINATE" --service-account default --scopes "https://www.googleapis.com/auth/devstorage.read_only","https://www.googleapis.com/auth/logging.write","https://www.googleapis.com/auth/monitoring.write","https://www.googleapis.com/auth/servicecontrol","https://www.googleapis.com/auth/service.management.readonly","https://www.googleapis.com/auth/trace.append","https://www.googleapis.com/auth/compute","https://www.googleapis.com/auth/devstorage.read_write" --disk "name=node1-docker,device-name=docker-disk,mode=rw,boot=no" --image-project "rhel-cloud" --image "rhel-7-v20171129" --boot-disk-size "20" --boot-disk-type "pd-standard" --boot-disk-device-name "node1" &
 gcloud compute instances create "node2" --zone "asia-southeast1-b" --machine-type "n1-standard-2" --subnet "default" --maintenance-policy "TERMINATE" --service-account default --scopes "https://www.googleapis.com/auth/devstorage.read_only","https://www.googleapis.com/auth/logging.write","https://www.googleapis.com/auth/monitoring.write","https://www.googleapis.com/auth/servicecontrol","https://www.googleapis.com/auth/service.management.readonly","https://www.googleapis.com/auth/trace.append","https://www.googleapis.com/auth/compute","https://www.googleapis.com/auth/devstorage.read_write" --disk "name=node2-docker,device-name=docker-disk,mode=rw,boot=no" --image-project "rhel-cloud" --image "rhel-7-v20171129" --boot-disk-size "20" --boot-disk-type "pd-standard" --boot-disk-device-name "node2" &
+
+# bastion station
+# OCP install will be executed from here
+gcloud compute instances create "ose-bastion" --zone "asia-southeast1-a" --machine-type "n1-standard-2" --preemptible --subnet "default" --maintenance-policy "TERMINATE" --service-account default --scopes "https://www.googleapis.com/auth/devstorage.read_only","https://www.googleapis.com/auth/logging.write","https://www.googleapis.com/auth/monitoring.write","https://www.googleapis.com/auth/servicecontrol","https://www.googleapis.com/auth/service.management.readonly","https://www.googleapis.com/auth/compute.readonly","https://www.googleapis.com/auth/compute","https://www.googleapis.com/auth/trace.append" --image-project "rhel-cloud" --image "rhel-7-v20171129" --boot-disk-size "20" --boot-disk-type "pd-standard" --boot-disk-device-name "ose-bastion" --address `gcloud compute addresses list | grep ose-bastion | awk '{print $3}'`
