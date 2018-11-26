@@ -82,15 +82,24 @@ master[1:3]
 #node[1:2] openshift_node_labels="{'region': 'primary'}" 
 #infranode[1:3] openshift_node_labels="{'region': 'infra'}"
 
-master[1:3] openshift_node_group_name='node-config-master'
-node[1:2] openshift_node_group_name='node-config-compute'
-infranode[1:3] openshift_node_group_name='node-config-infra'
+#australia-southeast1-b.c.ocp-3-11-223704.internal
+
+master1.australia-southeast1-a.c.ocp-3-11-223704.internal openshift_node_group_name='node-config-master'
+master2.australia-southeast1-b.c.ocp-3-11-223704.internal openshift_node_group_name='node-config-master'
+master3.australia-southeast1-c.c.ocp-3-11-223704.internal openshift_node_group_name='node-config-master'
+
+node1.australia-southeast1-a.c.ocp-3-11-223704.internal openshift_node_group_name='node-config-compute'
+node2.australia-southeast1-b.c.ocp-3-11-223704.internal openshift_node_group_name='node-config-compute'
+
+infranode1.australia-southeast1-a.c.ocp-3-11-223704.internal openshift_node_group_name='node-config-infra'
+infranode2.australia-southeast1-b.c.ocp-3-11-223704.internal openshift_node_group_name='node-config-infra'
+infranode3.australia-southeast1-c.c.ocp-3-11-223704.internal openshift_node_group_name='node-config-infra'
 
 
 [glusterfs]
-infranode1  glusterfs_devices='[ "/dev/sdb"]'
-infranode2  glusterfs_devices='[ "/dev/sdb"]'
-infranode3  glusterfs_devices='[ "/dev/sdb"]'
+infranode1.australia-southeast1-a.c.ocp-3-11-223704.internal  glusterfs_devices='[ "/dev/sdb"]'
+infranode2.australia-southeast1-b.c.ocp-3-11-223704.internal  glusterfs_devices='[ "/dev/sdb"]'
+infranode3.australia-southeast1-c.c.ocp-3-11-223704.internal  glusterfs_devices='[ "/dev/sdb"]'
 
 
 

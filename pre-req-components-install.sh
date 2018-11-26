@@ -5,9 +5,9 @@ set -e
 
 # Prepare Cluster 
 ansible nodes -vvv -b -i hosts -m shell -a "yum install -y subscription-manager && subscription-manager clean"
-ansible nodes -vvv -b -i hosts -m shell -a "subscription-manager register --username=$RHN_USERNAME --password=$RHN_PASSWORD && subscription-manager attach --pool=$RHN_SUB_POOL && subscription-manager refresh"
+ansible nodes -vvv -b -i hosts -m shell -a "subscription-manager register --username=$RHN_USERNAME --password=$RHN_PASSWORD && subscription-manager auto-attach && subscription-manager refresh"
 #ansible nodes -b -i hosts -m shell -a "subscription-manager repos --disable='*' && subscription-manager repos --enable=rhel-7-server-rpms --enable=rhel-7-server-optional-rpms --enable=rhel-7-server-extras-rpms --enable=rhel-7-server-ose-3.7-rpms --enable=rhel-7-fast-datapath-rpms"
-ansible nodes -vvv -b -i hosts -m shell -a "subscription-manager repos --disable=rhel-7-server-htb-rpms && subscription-manager repos --enable=rhel-7-server-rpms --enable=rhel-7-server-optional-rpms --enable=rhel-7-server-extras-rpms --enable=rhel-7-server-ose-3.7-rpms --enable=rhel-7-fast-datapath-rpms"
+ansible nodes -vvv -b -i hosts -m shell -a "subscription-manager repos --disable='*' && subscription-manager repos --disable=rhel-7-server-htb-rpms && subscription-manager repos --enable=rhel-7-server-rpms --enable=rhel-7-server-optional-rpms --enable=rhel-7-server-extras-rpms --enable=rhel-7-server-ose-3.11-rpms --enable=rhel-7-fast-datapath-rpms --enable=rhel-7-server-ansible-2.6-rpms"
 ansible nodes -vvv -b -i hosts -m shell -a "yum update -y && yum install -y docker wget git net-tools bind-utils iptables-services bridge-utils bash-completion kexec-tools sos psacct"
 
 # check how do we do this in OCP 3.11
