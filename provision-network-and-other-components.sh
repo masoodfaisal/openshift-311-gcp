@@ -7,13 +7,15 @@
 
 # create static addresses
 gcloud compute addresses create "master-external" --region "asia-southeast1" &
+
 gcloud compute addresses create "infranode-external" --region "asia-southeast1" &
+
 gcloud compute addresses create "ose-bastion" --region "asia-southeast1" &
 wait
 
 # create health checks
 gcloud compute health-checks create https master-health-check --port 8443 --request-path /healthz
-gcloud compute health-checks create http router-health-check --port 80 --request-path /
+#gcloud compute health-checks create http router-health-check --port 80 --request-path /
 
 
 # create target pools
