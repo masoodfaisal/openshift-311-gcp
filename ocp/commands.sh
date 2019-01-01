@@ -29,5 +29,8 @@ https://access.redhat.com/articles/3560571
 
 https://cloud.google.com/compute/docs/instances/adding-removing-ssh-keys
 
+export ANSIBLE_HOST_KEY_CHECKING=False
+ansible-playbook -i hosts --private-key=/home/faisalmasood/id_rsa_gcp /usr/share/ansible/openshift-ansible/playbooks/prerequisites.yml
 
-
+# errors
+https://bugzilla.redhat.com/show_bug.cgi?id=1640783
