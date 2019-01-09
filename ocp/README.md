@@ -19,7 +19,7 @@ exportfs -avr
 systemctl restart nfs-server
 
 Each export must be:
-
+```
 /<example_fs> *(rw,all_squash)
 Each export must be owned by nfsnobody:
 
@@ -28,8 +28,8 @@ Each export must have the following permissions:
 
 chmod 777 /<example_fs>
 
- # setsebool -P virt_use_nfs 1
-
+# setsebool -P virt_use_nfs 1
+```
 
 # Updating public IP to DNS A Record
 
