@@ -33,8 +33,7 @@ chmod 777 /<example_fs>
 
 # Updating public IP to DNS A Record
 
-Set the script variables `DNSZONE` with the zone name from Cloud DNS and `DNS_NAME` with the desired host url (e.g: `bastion.ocp.gcp.example.com`)
-
 Upload `guest_startup.sh` to host, make it executable and set the instance metadata with
-`gcloud compute instances add-metadata ${HOSTNAME} --metadata-from-file startup-script=/path/to/gues_startup.sh`
+`gcloud compute instances add-metadata ${HOSTNAME} --metadata-from-file startup-script=/path/to/guest_startup.sh`
 
+Set the script variables `DNSZONE` with the zone name from Cloud DNS and `DNS_NAME` with the desired host url (e.g: `bastion.ocp.gcp.example.com`)
